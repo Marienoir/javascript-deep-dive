@@ -1,4 +1,3 @@
-const getPostData = require('../helpers/utils')
 const {getTestService, postTestService} = require('../services/TestService')
 
 const getTest = async (req, res) => {
@@ -7,8 +6,7 @@ const getTest = async (req, res) => {
 }
 
 const postTest = async (req, res) => {
-    const data = await getPostData(req);
-    const result = postTestService(data)
+    const result = await postTestService(req)
     try {
         res.status(200).json({
             success: true,
