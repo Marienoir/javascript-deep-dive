@@ -1,0 +1,13 @@
+.env
+
+# PhpStorm Project Files
+.idea
+
+# Vs Code project folder
+.vscode
+
+# node package
+node_module
+
+# Mac DS_Store Files
+.DS_Store
