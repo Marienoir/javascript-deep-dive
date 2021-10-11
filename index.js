@@ -7,8 +7,7 @@ app.use('/api', router)
 
 const start = async () => {
     try {
-        // connect to Database
-        await connectDB
+        await connectDB // connect to Database
         app.listen(process.env.PORT || 3000)
     } catch (error) {
         console.log(error)
