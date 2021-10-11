@@ -8,7 +8,7 @@ const getPostData = (req) => {
             });
             // listen till the end
             req.on("end", () => {
-                resolve(body); // send back the data
+                resolve(JSON.parse(body)); // send back the data
             });
         } catch (error) {
             reject(error);

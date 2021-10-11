@@ -1,17 +1,18 @@
 const getPostData = require('../helpers/utils')
+const {getTestService, postTestService} = require('../services/TestService')
 
 const getTest = async (req, res) => {
-    return res.status(200).json({message: 'This is testing'})
+    const result = getTestService();
+    return res.status(200).json({message: result})
 }
 
 const postTest = async (req, res) => {
-    let data = await getPostData(req);
-    data = JSON.parse(data);
-
+    const data = await getPostData(req);
+    const result = postTestService(data)
     try {
         res.status(200).json({
             success: true,
-            message: data.test
+            message: result
         })
     } catch (e) {
         res.status(400).json({
