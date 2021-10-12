@@ -1,4 +1,4 @@
-const {getTestService, postTestService} = require('../services/TestService')
+const {getTestService} = require('../services/TestService')
 
 const getTest = async (req, res) => {
     const result = getTestService();
@@ -6,7 +6,7 @@ const getTest = async (req, res) => {
 }
 
 const postTest = async (req, res) => {
-    const result = await postTestService(req)
+    const result = req.body.test
     try {
         res.status(200).json({
             success: true,

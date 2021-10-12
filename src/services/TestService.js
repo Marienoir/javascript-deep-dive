@@ -1,7 +1,7 @@
 const testRepository = require('../repositories/TestRepository')
 
 const getTestService = () => {
-    return 'this is testing'
+    return 'this is testing';
 }
 
 const postTestService = async (req) => {
