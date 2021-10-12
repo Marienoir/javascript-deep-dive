@@ -9,6 +9,11 @@
 npm install
 ```
 
+### Environment variable
+```bash
+.env.sample cp .env
+```
+
 ### Run Application
 ```bash
 npm start

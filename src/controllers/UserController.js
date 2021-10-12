@@ -8,11 +8,11 @@ const registerUser = async (req, res) => {
     })
 }
 
-const setFreeDate = async () => {
+const setFreeDate = async (req, res) => {
     // To Dos
 }
 
-const getAllScheduledAppointments = async () => {
+const getAllScheduledAppointments = async (req, res) => {
     // To Dos
 }
 
