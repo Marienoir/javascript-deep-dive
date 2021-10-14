@@ -2,7 +2,6 @@ const userService = require('../services/UserService')
 
 const registerUser = async (req, res) => {
     const result = await userService.addUser(req.body);
-    console.log(result)
     return res.status(201).json({
         success: true,
         message: result
