@@ -2,14 +2,30 @@ const userService = require('../services/UserService')
 
 const registerUser = async (req, res) => {
     const result = await userService.addUser(req.body);
+    console.log(result)
     return res.status(201).json({
         success: true,
         message: result
     })
+    
 }
 
 const setFreeDate = async (req, res) => {
-    // To Dos
+    const username = req.params.username;
+    const date = req.body.date;
+
+    try {
+        const response = await userService.setDate(username, date);
+        return res.status(201).json({
+            success: true,
+            message: response
+        })
+    } catch (e) {
+        return res.status(401).json({
+            success: false,
+            message: e.message
+        })
+    }
 }
 
 const getAllScheduledAppointments = async (req, res) => {
