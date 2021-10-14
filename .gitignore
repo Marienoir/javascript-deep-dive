@@ -7,7 +7,7 @@
 .vscode
 
 # node package
-node_modules
+node_module
 
 # Mac DS_Store Files
 .DS_Store
