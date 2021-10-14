@@ -3,8 +3,10 @@ const UserAvailabilityModel = require("../models/UserAvailabilityModel");
 
 const addUser = async (postRequestData) => {
     let newUser = new UserModel(postRequestData);
-    await newUser.save()
-    return 'user saved successfully';
+    if (!await newUser.save()) {
+        throw new Error('User not saved')
+    }
+    return 'User saved successfully';
 }
 const setDate = async (username, date) => {
     const user = await UserModel.findOne({username: username});
@@ -17,7 +19,7 @@ const setDate = async (username, date) => {
         userId: user._id
     });
     await newDate.save()
-    return 'Free Date Set successfully';
+    return 'Free date set successfully';
 }
 
 module.exports = {
