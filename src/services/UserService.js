@@ -6,8 +6,16 @@ const addUser = async (postRequestData) => {
     await newUser.save()
     return 'user saved successfully';
 }
-const setDate = async (postRequestData) => {
-    let newDate = new UserAvailabilityModel(postRequestData);
+const setDate = async (username, date) => {
+    const user = await UserModel.findOne({username: username});
+    if (!user) {
+        throw new Error('Cannot perform this request')
+    }
+
+    let newDate = new UserAvailabilityModel({
+        date: date,
+        userId: user._id
+    });
     await newDate.save()
     return 'Free Date Set successfully';
 }
