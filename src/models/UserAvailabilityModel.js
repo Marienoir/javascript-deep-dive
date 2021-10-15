@@ -1,6 +1,6 @@
-import mongoose from 'mongoose';
+const mongoose = require("mongoose")
 
-const UserAvailabilitySchema = new mongoose.Schema({
+const UserAvailabilitySchema = mongoose.Schema({
     userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
