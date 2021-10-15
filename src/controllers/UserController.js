@@ -1,7 +1,7 @@
 const userService = require('../services/UserService')
 
 const index = (req, res) => {
-    res.sendFile('/index.html');
+    res.sendFile('/views/index.html');
 }
 
 const registerUser = async (req, res) => {
