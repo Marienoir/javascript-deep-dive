@@ -3,7 +3,7 @@ const AppointmentModel = require("../models/AppointmentModel");
 
 const bookAppointment = async (userAvailabilityId,name,email,reason) => {
 
-    const user = await UserAvailabilityModel.findOne({userAvailabilityId: userAvailabilityId,status:"pending"});
+    const user = await UserAvailabilityModel.findOne({userAvailabilityId: userAvailabilityId, status:"pending"});
     
     if (!user) {
         throw new Error('This user is booked already')

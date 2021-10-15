@@ -1,5 +1,9 @@
 const userService = require('../services/UserService')
 
+const index = (req, res) => {
+    res.sendFile('/index.html');
+}
+
 const registerUser = async (req, res) => {
     const result = await userService.addUser(req.body);
     return res.status(201).json({
@@ -32,6 +36,7 @@ const getAllScheduledAppointments = async (req, res) => {
 }
 
 module.exports = {
+    index,
     registerUser,
     setFreeDate,
     getAllScheduledAppointments
