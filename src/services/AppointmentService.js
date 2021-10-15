@@ -9,7 +9,11 @@ const bookAppointment = async (userAvailabilityId, info) => {
     status: "pending",
   });
 
-  if (!booking) {
+  const available = await AppointmentModel.findOne({
+    userAvailabilityId: userAvailabilityId,
+  });
+
+  if (available) {
     throw new Error("This user is booked already");
   }
 
