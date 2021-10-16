@@ -1,12 +1,10 @@
 const express = require("express");
 const app = express();
-// const bodyParser = require("body-parser");
+const bodyParser = require("body-parser");
 const router = require("./src/router");
 const connectDB = require("./src/config/connect");
 
-app.use(express.json());
-
-// app.use(bodyParser.json());
+app.use(bodyParser.json());
 app.use("/api", router);
 
 const bootstrap = async () => {
