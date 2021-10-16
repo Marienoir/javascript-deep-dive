@@ -1,6 +1,5 @@
 const express = require('express')
 const app = express()
-var path = require('path')
 const bodyParser = require('body-parser')
 const router = require('./src/routes')
 const viewRouter = require('./frontend/src/routes')

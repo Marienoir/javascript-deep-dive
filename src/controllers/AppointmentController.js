@@ -1,9 +1,5 @@
 const appointmentService = require('./../services/AppointmentService');
 
-const scheduleAppointment = (req, res) => {
-    res.sendFile('/booking.html');
-}
-
 const bookAppointment = async (req, res) => {
     const {userAvailabilityId} = req.params;
     const name = req.body.name;
@@ -24,4 +20,4 @@ try {
  }
 }
 
- module.exports = { bookAppointment, scheduleAppointment }
+ module.exports = { bookAppointment }
