@@ -1,5 +1,21 @@
 const userService = require("../services/UserService");
 
+const index = (req, res) => {
+    res.sendFile('/index.html');
+}
+
+const freeDate = (req, res) => {
+    res.sendFile('/free-date.html');
+}
+
+const setAvailability = (req, res) => {
+    res.sendFile('/availability.html');
+}
+
+const scheduledAppointments = (req, res) => {
+    res.sendFile('/availability.html');
+}
+
 const registerUser = async (req, res) => {
     const result = await userService.addUser(req.body);
     return res.status(201).json({
@@ -31,6 +47,9 @@ const getAllScheduledAppointments = async (req, res) => {
 };
 
 module.exports = {
+    index,
+    freeDate,
+    setAvailability,
     registerUser,
     setFreeDate,
     getAllScheduledAppointments,
