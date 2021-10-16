@@ -4,7 +4,7 @@ const registerUser = async (req, res) => {
     const result = await userService.addUser(req.body);
     return res.status(201).json({
         success: true,
-        message: result,
+        message: result
     });
 };
 
@@ -16,12 +16,12 @@ const setFreeDate = async (req, res) => {
         const response = await userService.setDate(username, date);
         return res.status(201).json({
             success: true,
-            message: response,
+            message: response
         });
     } catch (e) {
         return res.status(401).json({
             success: false,
-            message: e.message,
+            message: e.message
         });
     }
 };
