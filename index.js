@@ -13,11 +13,11 @@ app.use('/', viewRouter);
 
 const bootstrap = async () => {
     try {
-        await connectDB // connect to Database
-        app.listen(process.env.PORT || 3000)
+        await connectDB; // connect to Database
+        app.listen(process.env.PORT || 3000);
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
-}
+};
 
-bootstrap()
+bootstrap();
