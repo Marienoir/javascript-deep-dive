@@ -2,38 +2,33 @@ const UserAvailabilityModel = require("../models/UserAvailabilityModel");
 const AppointmentModel = require("../models/AppointmentModel");
 
 const bookAppointment = async (userAvailabilityId, info) => {
-  const { name, email, reason } = info;
+    const { name, email, reason } = info;
 
-  const booking = await UserAvailabilityModel.findOne({
-    userAvailabilityId: userAvailabilityId,
-    status: "pending",
-  });
+    const userAvailability = await UserAvailabilityModel.findOne({
+        _id: userAvailabilityId,
+        status: "pending",
+    });
 
-  const available = await AppointmentModel.findOne({
-    userAvailabilityId: userAvailabilityId,
-  });
+    if (!userAvailability) {
+        throw new Error("This date isn't available for booking");
+    }
 
-  if (available) {
-    throw new Error("This user is booked already");
-  }
+    let newAppointment = new AppointmentModel({
+        userAvailabilityId,
+        name,
+        email,
+        reason,
+    });
 
-  let newAppointment = new AppointmentModel({
-    userAvailabilityId,
-    name,
-    email,
-    reason,
-  });
+    userAvailability.status = 'booked';
+    await userAvailability.save()
 
-  const bookedAppointment = await newAppointment.save();
-  const status = "booked";
-
-  if (bookedAppointment) {
-    booking.status = status;
-    await booking.save();
-  }
-  return "Appointment set successfully";
+    if (!await newAppointment.save()) {
+        throw new Error("Appointment not scheduled successfully");
+    }
+    return "Appointment set successfully";
 };
 
 module.exports = {
-  bookAppointment,
+    bookAppointment,
 };
