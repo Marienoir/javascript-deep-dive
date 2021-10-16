@@ -1,7 +1,19 @@
 const userService = require('../services/UserService')
 
 const index = (req, res) => {
-    res.sendFile('/views/index.html');
+    res.sendFile('/index.html');
+}
+
+const freeDate = (req, res) => {
+    res.sendFile('/free-date.html');
+}
+
+const setAvailability = (req, res) => {
+    res.sendFile('/availability.html');
+}
+
+const scheduledAppointments = (req, res) => {
+    res.sendFile('/availability.html');
 }
 
 const registerUser = async (req, res) => {
@@ -37,6 +49,8 @@ const getAllScheduledAppointments = async (req, res) => {
 
 module.exports = {
     index,
+    freeDate,
+    setAvailability,
     registerUser,
     setFreeDate,
     getAllScheduledAppointments

@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const {index, registerUser, setFreeDate, getAllScheduledAppointments} = require('./controllers/UserController')
+const {registerUser, setFreeDate, getAllScheduledAppointments} = require('./controllers/UserController')
 const {bookAppointment} = require('./controllers/AppointmentController')
 
 router.post('/user', registerUser);
