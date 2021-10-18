@@ -9,15 +9,17 @@ const UserAvailabilitySchema = mongoose.Schema({
 
     userAvailabilityId: {
         type: mongoose.Schema.Types.ObjectId,
-        // required: true,
+        required: true,
     },
     date: {
         type: Date,
+        required: true,
     },
     status: {
         type: String,
         enum: ["pending", "booked"],
         default: "pending",
+        required: true,
     },
     createdAt: {
         type: Date,
