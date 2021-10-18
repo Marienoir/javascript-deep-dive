@@ -1,29 +1,29 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 
-const AppointmentSchema =  mongoose.Schema({
-    userAvailabilityId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'UserAvailability'
-    },
+const AppointmentSchema = mongoose.Schema({
     userId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
+        ref: "User",
+        required: true,
+    },
+    userAvailabilityId: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
     },
     name: {
-        type: String
+        type: String,
     },
     email: {
         type: String,
-        required: true
-        
+        required: true,
     },
     reason: {
-        type: String
+        type: String,
     },
     createdAt: {
         type: Date,
-        default: Date.now()
-    }
+        default: Date.now(),
+    },
 });
 
-module.exports = mongoose.model('Appointment', AppointmentSchema)
+module.exports = mongoose.model("Appointment", AppointmentSchema);
