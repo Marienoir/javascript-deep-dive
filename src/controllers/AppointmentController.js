@@ -1,24 +1,24 @@
 const appointmentService = require("./../services/AppointmentService");
 
 const bookAppointment = async (req, res) => {
-    const { userAvailabilityId } = req.params;
+  const { userAvailabilityId } = req.params;
 
-    try {
-        const response = await appointmentService.bookAppointment(
-            userAvailabilityId,
-            req.body
-        );
+  try {
+    const response = await appointmentService.bookAppointment(
+      userAvailabilityId,
+      req.body
+    );
 
-        return res.status(201).json({
-            success: true,
-            message: response,
-        });
-    } catch (e) {
-        return res.status(401).json({
-            success: false,
-            message: e.message,
-        });
-    }
+    return res.status(201).json({
+      success: true,
+      message: response,
+    });
+  } catch (e) {
+    return res.status(401).json({
+      success: false,
+      message: e.message,
+    });
+  }
 };
 
 module.exports = { bookAppointment };
