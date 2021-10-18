@@ -1,11 +1,22 @@
 const express = require("express");
 const app = express();
-
-const router = require("./src/router");
+const path = require("path");
+const router = require("./src/routes");
+const viewRouter = require("./frontend/src/routes");
 const connectDB = require("./src/config/connect");
 
 app.use(express.json());
 app.use("/api", router);
+app.set("view engine", "pug");
+app.set("views", path.join(__dirname, "views"));
+
+app.use(express.static("public"));
+app.use(
+  express.static("views", {
+    extensions: ["html"],
+  })
+);
+app.use("/", viewRouter);
 
 const bootstrap = async () => {
   try {

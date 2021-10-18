@@ -8,7 +8,6 @@ const bookAppointment = async (req, res) => {
       userAvailabilityId,
       req.body
     );
-
     return res.status(201).json({
       success: true,
       message: response,

@@ -2,11 +2,18 @@ const { scheduledAppointments } = require("../services/AppointmentService");
 const userService = require("../services/UserService");
 
 const registerUser = async (req, res) => {
-  const result = await userService.addUser(req.body);
-  return res.status(201).json({
-    success: true,
-    message: result,
-  });
+  try {
+    const result = await userService.addUser(req.body);
+    return res.status(201).json({
+      success: true,
+      message: result,
+    });
+  } catch (e) {
+    return res.status(400).json({
+      success: false,
+      message: "Bad request",
+    });
+  }
 };
 
 const setFreeDate = async (req, res) => {
