@@ -1,5 +1,5 @@
 const scheduleAppointment = (req, res) => {
-    res.sendFile('/booking.html');
+    res.render('/booking');
 }
 
 module.exports = { scheduleAppointment }

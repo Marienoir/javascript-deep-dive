@@ -1,17 +1,19 @@
+const path = require("path");
+
 const index = (req, res) => {
-    res.sendFile('/index.html');
+    res.render('/index');
 }
 
 const freeDate = (req, res) => {
-    res.sendFile('/free-date.html');
+    res.render('/free-date');
 }
 
 const setAvailability = (req, res) => {
-    res.sendFile('/availability.html');
+    res.render('/availability');
 }
 
 const scheduledAppointments = (req, res) => {
-    res.sendFile('/availability.html');
+    res.render('/appointments');
 }
 
 module.exports = {

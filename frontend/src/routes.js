@@ -5,7 +5,7 @@ const {scheduleAppointment} = require("./controllers/AppointmentController")
 
 router.get('/', index);
 router.get('/free-date', freeDate);
-router.get('/availability/:username', setAvailability);
+router.get('/availability', setAvailability);
 router.get('/appointments', scheduledAppointments);
 router.get('/booking', scheduleAppointment)
 

@@ -4,11 +4,7 @@ const bookAppointment = async (req, res) => {
     const { userAvailabilityId } = req.params;
 
     try {
-        const response = await appointmentService.bookAppointment(
-            userAvailabilityId,
-            req.body
-        );
-
+        const response = await appointmentService.bookAppointment(userAvailabilityId, req.body);
         return res.status(201).json({
             success: true,
             message: response,
