@@ -45,10 +45,9 @@ const scheduledAppointments = async (params) => {
     }
 
     // Getting all the scheduledAppointments of the user
-    const appointment = await AppointmentModel.find({ userId: userId }).populate(
-        "userId",
-        "name email"
-    );
+    const appointment = await AppointmentModel.find({
+        userId: userId,
+    }).populate("userAvailabilityId", "date");
 
     // if there are no scheduled appointments for the user throw an error
     if (!appointment) {

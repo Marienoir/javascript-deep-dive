@@ -42,8 +42,10 @@ const getAllScheduledAppointments = async (req, res) => {
             appointments,
         });
     } catch (error) {
-        res.status(500);
-        throw new Error(error);
+        return res.status(401).json({
+            success: false,
+            message: error.message,
+        });
     }
 };
 
