@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const {
-  index,
-  setAvailability,
-  scheduledAppointments,
+    index,
+    setAvailability,
+    scheduledAppointments,
 } = require("./controllers/UserController");
 const { scheduleAppointment } = require("./controllers/AppointmentController");
 
