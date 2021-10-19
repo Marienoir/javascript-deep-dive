@@ -2,6 +2,10 @@ const index = (req, res) => {
     res.render('/index');
 }
 
+const signup = (req, res) => {
+    res.render('/signup');
+}
+
 const dashboard = (req, res) => {
     res.render('/dashboard');
 }
@@ -16,6 +20,7 @@ const scheduledAppointments = (req, res) => {
 
 module.exports = {
     index,
+    signup,
     dashboard,
     setAvailability,
     scheduledAppointments

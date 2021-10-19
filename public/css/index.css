@@ -157,6 +157,11 @@ select {
     line-height: 38px;
 }
 
+.fs-5rem {
+    font-size: 5rem;
+    line-height: 1;
+}
+
 .fw-bold {
     font-weight: bold;
 }
@@ -167,6 +172,10 @@ select {
 
 .mt-1 {
     margin-top: 10px;
+}
+
+.mt-6rem {
+    margin-top: 6rem;
 }
 
 .text-primary {
