@@ -12,19 +12,19 @@ app.set("views", path.join(__dirname, "views"));
 
 app.use(express.static("public"));
 app.use(
-  express.static("views", {
-    extensions: ["html"],
-  })
+    express.static("views", {
+        extensions: ["html"],
+    })
 );
 app.use("/", viewRouter);
 
 const bootstrap = async () => {
-  try {
-    await connectDB; // connect to Database
-    app.listen(process.env.PORT || 3000);
-  } catch (error) {
-    console.log(error);
-  }
+    try {
+        await connectDB; // connect to Database
+        app.listen(process.env.PORT || 3000);
+    } catch (error) {
+        console.log(error);
+    }
 };
 
 bootstrap();
