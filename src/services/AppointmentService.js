@@ -13,7 +13,7 @@ const bookAppointment = async (userAvailabilityId, info) => {
     //const { userId } = userAvailability;
 
     if (!userAvailability) {
-        throw new Error("This user isn't available for booking");
+        throw new Error("This user date isn't available for booking");
     }
 
     const { userId } = userAvailability;
@@ -47,10 +47,9 @@ const scheduledAppointments = async (params) => {
     }
 
     // Getting all the scheduledAppointments of the user
-    const appointment = await AppointmentModel.find({ userId: userId }).populate(
-        "userId",
-        "name email"
-    );
+    const appointment = await AppointmentModel.find({
+        userId: userId,
+    }).populate("userAvailabilityId", "date");
 
     // if there are no scheduled appointments for the user throw an error
     if (!appointment) {
