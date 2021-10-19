@@ -12,7 +12,7 @@ formWrapper.addEventListener('submit', function (e) {
         username
     }
 
-    fetch('http://localhost:4000/api/user', {
+    fetch(process.env.BASE_URL + '/user', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
