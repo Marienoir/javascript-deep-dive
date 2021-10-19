@@ -8,7 +8,7 @@ const {
 const { scheduleAppointment } = require("./controllers/AppointmentController");
 
 router.get("/", index);
-router.get("/availability", setAvailability);
+router.get("/availability?username=username", setAvailability);
 router.get("/appointments?user_id=userId", scheduledAppointments);
 router.get("/booking", scheduleAppointment);
 

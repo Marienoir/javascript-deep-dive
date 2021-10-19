@@ -6,7 +6,7 @@ const addUser = async (postRequestData) => {
     if (!await newUser.save()) {
         throw new Error('User not saved')
     }
-    return `User save successfully. Here is your unique link: ${process.env.BASE_URL}${postRequestData.username}`
+    return `User save successfully. Here is your unique link: ${process.env.BASE_URL}/availability?username=${postRequestData.username} to set your availability`
 }
 const setDate = async (username, date) => {
     const user = await UserModel.findOne({username: username});
