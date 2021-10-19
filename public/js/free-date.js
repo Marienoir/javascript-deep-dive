@@ -3,7 +3,6 @@ let submit = document.getElementById("submit")
 submit.addEventListener("submit",(e) =>{
     e.preventDefault()
     let date = document.getElementById("date-input").value
-    console.log(date)
 
     fetch('http://localhost:4000/api/user/availability/adaa', {
         method: 'POST',
@@ -11,8 +10,7 @@ submit.addEventListener("submit",(e) =>{
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            date: date,
-            
+            date: date,    
         }),
     })
         .then(response => response.json())
