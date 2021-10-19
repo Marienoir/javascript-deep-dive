@@ -12,6 +12,6 @@ router.post("/user", registerUser);
 router.post("/user/availability/:username", setFreeDate);
 router.get("/user/dashboard/:username", dashboard);
 router.post("/appointment/:userAvailabilityId", bookAppointment);
-router.get("/user/:userId/appointments", getAllScheduledAppointments);
+router.get("/user/:username/appointments", getAllScheduledAppointments);
 
 module.exports = router;

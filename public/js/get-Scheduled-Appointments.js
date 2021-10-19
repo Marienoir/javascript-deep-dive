@@ -3,7 +3,8 @@
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 
-const userId = urlParams.get("user_id");
+const username = urlParams.get("username");
+document.getElementById('goto-dashboard').href = `/dashboard?username=${username}`
 const bodyContent = document.querySelector("#content");
 
 const options = {
@@ -13,10 +14,10 @@ const options = {
     },
 };
 
-const getScheduledAppointments = async (userId) => {
-    if (userId) {
+const getScheduledAppointments = async (username) => {
+    if (username) {
         const response = await fetch(
-            `http://localhost:4000/api/user/${userId}/appointments`,
+            `http://localhost:4000/api/user/${username}/appointments`,
             options
         );
 
@@ -52,4 +53,4 @@ getScheduledAppointments().catch((error) => {
     alert(error.message); // 'An error has occurred: 404'
 });
 
-getScheduledAppointments(userId);
+getScheduledAppointments(username);

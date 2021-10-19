@@ -3,9 +3,10 @@ const urlParams = new URLSearchParams(queryString);
 
 const username = urlParams.get("username");
 document.getElementById('availability').href = `/availability?username=${username}`
+document.getElementById('appointments').href = `/appointments?username=${username}`
 const bodyContent = document.querySelector("#content");
 
-fetch(`http://localhost:4000/api/user/dashboard/${username}`, {
+fetch(`https://jsdd-calendar.herokuapp.com/api/user/dashboard/${username}`, {
     method: 'GET',
     headers: {
         'Content-Type': 'application/json',

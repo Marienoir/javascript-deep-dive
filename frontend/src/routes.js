@@ -13,7 +13,7 @@ router.get("/", index);
 router.get("/signup", signup);
 router.get("/dashboard?username=username", dashboard);
 router.get("/availability?username=username", setAvailability);
-router.get("/appointments?user_id=userId", scheduledAppointments);
+router.get("/appointments?username=username", scheduledAppointments);
 router.get("/booking?id=userAvailabilityId", scheduleAppointment);
 
 module.exports = router;
