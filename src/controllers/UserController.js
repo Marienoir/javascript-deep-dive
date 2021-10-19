@@ -1,6 +1,5 @@
 const { scheduledAppointments } = require("../services/AppointmentService");
 const userService = require("../services/UserService");
-const {use} = require("express/lib/router");
 
 const registerUser = async (req, res) => {
     try {

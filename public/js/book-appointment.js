@@ -27,12 +27,16 @@ formWrapper.addEventListener("submit", function (e) {
         .then((response) => response.json())
         .then((bookingData) => {
             if (bookingData.success === true) {
-                alert("Success!!!" + bookingData.message);
+                alert("Success!!! " + bookingData.message);
             } else {
-                alert("Error!!!" + bookingData.message);
+                alert("Error!!! " + bookingData.message);
             }
         })
         .catch((error) => {
-            alert("Error!!!" + error);
+            alert("Error!!! " + error);
         });
+
+    document.getElementById("name").value = '';
+    document.getElementById("email").value = '';
+    document.getElementById("message").value = '';
 });

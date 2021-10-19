@@ -21,12 +21,14 @@ submit.addEventListener("submit",(e) =>{
         .then(response => response.json())
         .then(data => {
             if (data.success === true) {
-                alert('Success!!!' + data.message)
+                alert('Success!!! ' + data.message)
             } else {
-                alert('Error!!!' + data.message)
+                alert('Error!!! ' + data.message)
             }
         })
         .catch((error) => {
-            alert('Error!!!' + error);
+            alert('Error!!! ' + error);
         });
+
+    document.getElementById("date-input").value = '';
 })
