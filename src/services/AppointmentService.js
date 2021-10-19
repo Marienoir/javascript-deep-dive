@@ -10,12 +10,11 @@ const bookAppointment = async (userAvailabilityId, info) => {
         status: "pending",
     });
 
-    const { userId } = userAvailability;
-    console.log({ userId, userAvailabilityId });
-
     if (!userAvailability) {
         throw new Error("This date isn't available for booking");
     }
+
+    const { userId } = userAvailability;
 
     let newAppointment = await AppointmentModel.create({
         userId,
