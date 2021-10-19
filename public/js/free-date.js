@@ -2,7 +2,7 @@ const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 
 const username = urlParams.get("username");
-
+document.getElementById('goto-dashboard').href = `/dashboard?username=${username}`
 let submit = document.getElementById("submit")
 
 submit.addEventListener("submit",(e) =>{

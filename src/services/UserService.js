@@ -6,7 +6,7 @@ const addUser = async (postRequestData) => {
     if (!await newUser.save()) {
         throw new Error('User not saved')
     }
-    return `User save successfully. Here is your unique link: ${process.env.BASE_URL}/availability?username=${postRequestData.username} to set your availability`
+    return `User save successfully. Here is your unique link: ${process.env.BASE_URL}/dashboard?username=${postRequestData.username}`
 }
 const setDate = async (username, date) => {
     const user = await UserModel.findOne({username: username});
@@ -22,7 +22,20 @@ const setDate = async (username, date) => {
     return 'Free date set successfully';
 }
 
+const getAllPendingAppointments = async (username) => {
+    const user = await UserModel.findOne({username: username});
+    if (!user) {
+        throw new Error('Cannot perform this request')
+    }
+
+    const appointments = await UserAvailabilityModel.find({
+        userId: user._id, status: 'pending'
+    });
+    return appointments;
+}
+
 module.exports = {
     addUser,
-    setDate
+    setDate,
+    getAllPendingAppointments
 }
