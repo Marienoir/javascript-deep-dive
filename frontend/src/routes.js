@@ -9,7 +9,7 @@ const { scheduleAppointment } = require("./controllers/AppointmentController");
 
 router.get("/", index);
 router.get("/availability", setAvailability);
-router.get("/appointments/", scheduledAppointments);
+router.get("/appointments?user_id=userId", scheduledAppointments);
 router.get("/booking", scheduleAppointment);
 
 module.exports = router;

@@ -44,8 +44,6 @@ const scheduledAppointments = async (params) => {
     throw new Error("User is not available");
   }
 
-  console.log(userId);
-
   // Getting all the scheduledAppointments of the user
   const appointment = await AppointmentModel.find({
     userId: userId,
