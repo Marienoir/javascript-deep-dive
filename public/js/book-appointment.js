@@ -1,3 +1,8 @@
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+
+const userAvailabilityId = urlParams.get("id");
+
 let formWrapper = document.getElementById("makeBooking");
 
 formWrapper.addEventListener("submit", function (e) {
@@ -12,7 +17,7 @@ formWrapper.addEventListener("submit", function (e) {
         message,
     };
 
-    fetch("http://localhost:4000/api/appointment/6167a2dea850518fb4dde07b", {
+    fetch(`http://localhost:4000/api/appointment/${userAvailabilityId}`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

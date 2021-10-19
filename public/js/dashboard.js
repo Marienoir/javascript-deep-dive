@@ -13,7 +13,7 @@ fetch(`http://localhost:4000/api/user/dashboard/${username}`, {
 })
     .then(response => response.json())
     .then(data => {
-        if (data.status === true) {
+        if (data.success === true) {
             let response = data.result;
             if (response.length > 0) {
                 const newAppointment = response.map((item, i) => {
