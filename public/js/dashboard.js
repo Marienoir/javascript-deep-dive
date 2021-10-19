@@ -6,7 +6,7 @@ document.getElementById('availability').href = `/availability?username=${usernam
 document.getElementById('appointments').href = `/appointments?username=${username}`
 const bodyContent = document.querySelector("#content");
 
-fetch(`https://jsdd-calendar.herokuapp.com/api/user/dashboard/${username}`, {
+fetch(`http://localhost:4000/api/user/dashboard/${username}`, {
     method: 'GET',
     headers: {
         'Content-Type': 'application/json',
@@ -38,5 +38,5 @@ fetch(`https://jsdd-calendar.herokuapp.com/api/user/dashboard/${username}`, {
         }
     })
     .catch((error) => {
-        alert('Error!!!' + error);
+        alert('Error!!! ' + error);
     });
