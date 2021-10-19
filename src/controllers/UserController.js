@@ -1,5 +1,6 @@
 const { scheduledAppointments } = require("../services/AppointmentService");
 const userService = require("../services/UserService");
+const {use} = require("express/lib/router");
 
 const registerUser = async (req, res) => {
     try {
@@ -15,6 +16,21 @@ const registerUser = async (req, res) => {
         });
     }
 };
+
+const dashboard = async (req, res) => {
+    try {
+        const result = await userService.getAllPendingAppointments(req.params.username);
+        res.status(200).json({
+            success: true,
+            result,
+        });
+    } catch (error) {
+        return res.status(401).json({
+            success: false,
+            message: error.message,
+        });
+    }
+}
 
 const setFreeDate = async (req, res) => {
     const username = req.params.username;
@@ -51,6 +67,7 @@ const getAllScheduledAppointments = async (req, res) => {
 
 module.exports = {
     registerUser,
+    dashboard,
     setFreeDate,
     getAllScheduledAppointments,
 };
