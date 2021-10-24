@@ -1,11 +1,11 @@
 const UserService = require('./UserService');
 const AppointmentService = require('./AppointmentService');
 
-const Index = () => {
+const ServiceContainer = () => {
     return {
         userService: UserService(),
         appointmentService: AppointmentService
     }
 }
 
-module.exports = Index
+module.exports = ServiceContainer()

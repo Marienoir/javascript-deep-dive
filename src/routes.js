@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const ServiceContainer = require('./services')
 const UserController = require('./controllers/UserController')
-const UserControllerHandler = UserController(ServiceContainer())
+const UserControllerHandler = UserController(ServiceContainer)
 
 const { bookAppointment } = require("./controllers/AppointmentController");
 

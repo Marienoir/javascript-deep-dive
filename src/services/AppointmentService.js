@@ -10,8 +10,6 @@ const bookAppointment = async (userAvailabilityId, info) => {
         status: "pending",
     });
 
-    //const { userId } = userAvailability;
-
     if (!userAvailability) {
         throw new Error("This user date isn't available for booking");
     }

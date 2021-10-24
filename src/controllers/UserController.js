@@ -1,10 +1,10 @@
 const UserController = (serviceContainer) => {
     const registerUser = async (req, res) => {
         try {
-            const result = await serviceContainer.userService.addUser(req.body);
+            await serviceContainer.userService.addUser(req.body);
             return res.status(201).json({
                 success: true,
-                message: result,
+                message: `User save successfully. Here is your unique link: ${process.env.BASE_URL}/dashboard?username=${req.body.username}`
             });
         } catch (e) {
             return res.status(400).json({
@@ -34,10 +34,10 @@ const UserController = (serviceContainer) => {
         const date = req.body.date;
 
         try {
-            const response = await serviceContainer.userService.setDate(username, date);
+            await serviceContainer.userService.setDate(username, date);
             return res.status(201).json({
                 success: true,
-                message: response,
+                message: 'Free date set successfully',
             });
         } catch (e) {
             return res.status(401).json({

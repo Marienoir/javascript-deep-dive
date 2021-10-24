@@ -1,5 +1,6 @@
 const UserModel = require("../models/UserModel");
 const UserAvailabilityModel = require("../models/UserAvailabilityModel");
+const UserRepository = require("../repositories/UserRepository")
 
 const UserService = () => {
     const addUser = async (postRequestData) => {
@@ -7,11 +8,10 @@ const UserService = () => {
         if (!await newUser.save()) {
             throw new Error('User not saved')
         }
-        return `User save successfully. Here is your unique link: ${process.env.BASE_URL}/dashboard?username=${postRequestData.username}`
     }
 
     const setDate = async (username, date) => {
-        const user = await UserModel.findOne({username: username});
+        const user = await UserRepository.findUserByUserName(username)
         if (!user) {
             throw new Error('Cannot perform this request')
         }
@@ -21,11 +21,10 @@ const UserService = () => {
             userId: user._id
         });
         await newDate.save()
-        return 'Free date set successfully';
     }
 
     const getAllPendingAppointments = async (username) => {
-        const user = await UserModel.findOne({username: username});
+        const user = await UserRepository.findUserByUserName(username)
         if (!user) {
             throw new Error('Cannot perform this request')
         }
