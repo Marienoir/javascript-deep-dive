@@ -1,41 +1,46 @@
 const UserModel = require("../models/UserModel");
 const UserAvailabilityModel = require("../models/UserAvailabilityModel");
 
-const addUser = async (postRequestData) => {
-    let newUser = new UserModel(postRequestData);
-    if (!await newUser.save()) {
-        throw new Error('User not saved')
-    }
-    return `User save successfully. Here is your unique link: ${process.env.BASE_URL}/dashboard?username=${postRequestData.username}`
-}
-const setDate = async (username, date) => {
-    const user = await UserModel.findOne({username: username});
-    if (!user) {
-        throw new Error('Cannot perform this request')
+const UserService = () => {
+    const addUser = async (postRequestData) => {
+        let newUser = new UserModel(postRequestData);
+        if (!await newUser.save()) {
+            throw new Error('User not saved')
+        }
+        return `User save successfully. Here is your unique link: ${process.env.BASE_URL}/dashboard?username=${postRequestData.username}`
     }
 
-    let newDate = new UserAvailabilityModel({
-        date: date,
-        userId: user._id
-    });
-    await newDate.save()
-    return 'Free date set successfully';
-}
+    const setDate = async (username, date) => {
+        const user = await UserModel.findOne({username: username});
+        if (!user) {
+            throw new Error('Cannot perform this request')
+        }
 
-const getAllPendingAppointments = async (username) => {
-    const user = await UserModel.findOne({username: username});
-    if (!user) {
-        throw new Error('Cannot perform this request')
+        let newDate = new UserAvailabilityModel({
+            date: date,
+            userId: user._id
+        });
+        await newDate.save()
+        return 'Free date set successfully';
     }
 
-    const appointments = await UserAvailabilityModel.find({
-        userId: user._id, status: 'pending'
-    });
-    return appointments;
+    const getAllPendingAppointments = async (username) => {
+        const user = await UserModel.findOne({username: username});
+        if (!user) {
+            throw new Error('Cannot perform this request')
+        }
+
+        const appointments = await UserAvailabilityModel.find({
+            userId: user._id, status: 'pending'
+        });
+        return appointments;
+    }
+
+    return {
+        addUser,
+        setDate,
+        getAllPendingAppointments
+    }
 }
 
-module.exports = {
-    addUser,
-    setDate,
-    getAllPendingAppointments
-}
+module.exports = UserService
