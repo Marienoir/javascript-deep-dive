@@ -1,8 +1,13 @@
+const UserModel = require("../models/UserModel");
+const UserAvailabilityModel = require("../models/UserAvailabilityModel");
 
-const getUserPostData = async (postData) => {
-    // To dos
-}
+const UserRepository = () => {
+    const findUserByUserName = async (username) => {
+        return UserModel.findOne({username: username});
+    }
 
-module.exports = {
-    getUserPostData
+    return {
+        findUserByUserName
+    }
 }
+module.exports = UserRepository()
