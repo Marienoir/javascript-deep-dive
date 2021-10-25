@@ -5,9 +5,7 @@ const UserRepository = require("../repositories/UserRepository")
 const UserService = () => {
     const addUser = async (postRequestData) => {
         let newUser = new UserModel(postRequestData);
-        if (!await newUser.save()) {
-            throw new Error('User not saved')
-        }
+        await newUser.save()
     }
 
     const setDate = async (username, date) => {

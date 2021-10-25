@@ -5,7 +5,7 @@ const AppointmentController = (serviceContainer) => {
         } = req.params;
 
         try {
-            const response = await appointmentService.bookAppointment(
+            const response = await serviceContainer.appointmentService.bookAppointment(
                 userAvailabilityId,
                 req.body
             );
