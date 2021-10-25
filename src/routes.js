@@ -5,11 +5,8 @@ const ServiceContainer = require("./services");
 const UserController = require("./controllers/UserController");
 const AppointmentController = require("./controllers/AppointmentController");
 
-
 const UserControllerHandler = UserController(ServiceContainer);
 const AppointmentControllerHandler = AppointmentController(ServiceContainer);
-
-//const { bookAppointment } = require("./controllers/AppointmentController");
 
 router.post("/user/availability/:username", (req, res) =>
     UserControllerHandler.setFreeDate(req, res)
@@ -22,8 +19,6 @@ router.post("/appointment/:userAvailabilityId", (req, res) =>
     AppointmentControllerHandler.bookAppointment(req, res)
 );
 
-
-//router.post("/appointment/:userAvailabilityId", bookAppointment);
 router.get("/user/:username/appointments", (req, res) =>
     UserControllerHandler.getAllScheduledAppointments(req, res)
 );

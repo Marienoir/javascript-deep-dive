@@ -20,7 +20,9 @@ const AppointmentController = (serviceContainer) => {
             });
         }
     }
-    return bookAppointment
+    return {
+        bookAppointment
+    }
 };
 
 module.exports = AppointmentController
