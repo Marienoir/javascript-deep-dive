@@ -3,7 +3,11 @@ const AppointmentModel = require("../models/AppointmentModel");
 const UserModel = require("../models/UserModel");
 
 const bookAppointment = async (userAvailabilityId, info) => {
-    const { name, email, reason } = info;
+    const {
+        name,
+        email,
+        reason
+    } = info;
 
     const userAvailability = await UserAvailabilityModel.findOne({
         _id: userAvailabilityId,
@@ -14,7 +18,9 @@ const bookAppointment = async (userAvailabilityId, info) => {
         throw new Error("This user date isn't available for booking");
     }
 
-    const { userId } = userAvailability;
+    const {
+        userId
+    } = userAvailability;
 
     let newAppointment = await AppointmentModel.create({
         userId,
@@ -35,9 +41,13 @@ const bookAppointment = async (userAvailabilityId, info) => {
 };
 
 const scheduledAppointments = async (params) => {
-    const { username } = params;
+    const {
+        username
+    } = params;
     // check if the user exists in the database
-    const user = await UserModel.findOne({ username: username });
+    const user = await UserModel.findOne({
+        username: username
+    });
 
     // if user does not exist in the database throw new error
     if (!user) {
