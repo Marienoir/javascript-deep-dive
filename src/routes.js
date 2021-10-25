@@ -1,31 +1,34 @@
 const express = require("express");
 const router = express.Router();
-const ServiceContainer = require('./services')
-const UserController = require('./controllers/UserController')
-const UserControllerHandler = UserController(ServiceContainer)
+const ServiceContainer = require("./services");
 
-const { bookAppointment } = require("./controllers/AppointmentController");
+const UserController = require("./controllers/UserController");
+const AppointmentController = require("./controllers/AppointmentController");
 
-router.post(
-    "/user/availability/:username",
-    (req, res) =>
-        UserControllerHandler.setFreeDate(req, res)
+
+const UserControllerHandler = UserController(ServiceContainer);
+const AppointmentControllerHandler = AppointmentController(ServiceContainer);
+
+//const { bookAppointment } = require("./controllers/AppointmentController");
+
+router.post("/user/availability/:username", (req, res) =>
+    UserControllerHandler.setFreeDate(req, res)
 );
-router.get(
-    "/user/dashboard/:username",
-    (req, res) =>
-        UserControllerHandler.dashboard(req, res)
+router.get("/user/dashboard/:username", (req, res) =>
+    UserControllerHandler.dashboard(req, res)
 );
-router.post("/appointment/:userAvailabilityId", bookAppointment);
-router.get(
-    "/user/:username/appointments",
-    (req, res) =>
-        UserControllerHandler.getAllScheduledAppointments(req, res)
+
+router.post("/appointment/:userAvailabilityId", (req, res) =>
+    AppointmentControllerHandler.bookAppointment(req, res)
 );
-router.post(
-    "/user",
-    (req, res) =>
-        UserControllerHandler.registerUser(req, res)
+
+
+//router.post("/appointment/:userAvailabilityId", bookAppointment);
+router.get("/user/:username/appointments", (req, res) =>
+    UserControllerHandler.getAllScheduledAppointments(req, res)
 );
+router.post("/user", (req, res) => {
+    UserControllerHandler.registerUser(req, res);
+});
 
 module.exports = router;
