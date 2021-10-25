@@ -12,7 +12,7 @@ formWrapper.addEventListener('submit', function (e) {
         username
     }
 
-    fetch(process.env.BASE_URL + '/user', {
+    fetch('http://localhost:4000/api/user', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -22,12 +22,16 @@ formWrapper.addEventListener('submit', function (e) {
         .then(response => response.json())
         .then(data => {
             if (data.success === true) {
-                alert('Success!!!' + data.message)
+                alert('Success!!! ' + data.message)
             } else {
-                alert('Error!!!' + data.message)
+                alert('Error!!! ' + data.message)
             }
         })
         .catch((error) => {
-            alert('Error!!!' + error);
+            alert('Error!!! ' + error);
         });
+
+    document.getElementById('name').value = '';
+    document.getElementById('email').value = '';
+    document.getElementById('username').value = '';
 })

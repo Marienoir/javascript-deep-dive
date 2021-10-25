@@ -1,10 +1,15 @@
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+
+const username = urlParams.get("username");
+document.getElementById('goto-dashboard').href = `/dashboard?username=${username}`
 let submit = document.getElementById("submit")
 
 submit.addEventListener("submit",(e) =>{
     e.preventDefault()
     let date = document.getElementById("date-input").value
 
-    fetch('http://localhost:4000/api/user/availability/adaa', {
+    fetch(`http://localhost:4000/api/user/availability/${username}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -16,12 +21,14 @@ submit.addEventListener("submit",(e) =>{
         .then(response => response.json())
         .then(data => {
             if (data.success === true) {
-                alert('Success!!!' + data.message)
+                alert('Success!!! ' + data.message)
             } else {
-                alert('Error!!!' + data.message)
+                alert('Error!!! ' + data.message)
             }
         })
         .catch((error) => {
-            alert('Error!!!' + error);
+            alert('Error!!! ' + error);
         });
+
+    document.getElementById("date-input").value = '';
 })

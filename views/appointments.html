@@ -14,6 +14,9 @@
             <h1 class='content__white-body-header fs-header'>
                 My Appointments
             </h1>
+            <p class='content__white-body-text'>
+                Not interested? <a href="#" id="goto-dashboard"><span class='text-primary fw-bold'>Go dashboard</span></a>
+            </p>
             <div class="row">
                 <div class="col-12">
                     <table class="table">
@@ -23,40 +26,11 @@
                             <th scope="col">Name</th>
                             <th scope="col">Email</th>
                             <th scope="col">Reason for booking</th>
-                            <th scope="col">Created Date</th>
+                            <th scope="col">Date Booked</th>
                         </tr>
                         </thead>
-                        <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto@example.com</td>
-                            <td>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua.
-                            </td>
-                            <td>Oct 30th, 2021</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton@example.com</td>
-                            <td>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua.
-                            </td>
-                            <td>Oct 30th, 2021</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>Larry@example.com</td>
-                            <td>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua.
-                            </td>
-                            <td>Oct 30th, 2021</td>
-                        </tr>
+                        <tbody id="content">
+                            <!-- results comes in here from the script -->
                         </tbody>
                     </table>
                 </div>
@@ -65,4 +39,5 @@
     </section>
 </div>
 </body>
+<script src="./js/get-Scheduled-Appointments.js"></script>
 </html>

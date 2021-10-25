@@ -3,60 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <title>Calendar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="/css/index.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 <main>
-    <section class='content__wrapper'>
-        <div class='content__col-7 m-auto'>
-            <div class='content__container'>
-                <h1 class='content__white-body-header fs-header'>
-                    Let’s set up your account
-                </h1>
-                <p class='content__white-body-text'>
-                    Already have an account? <span class='text-primary fw-bold'>Sign in</span>
-                </p>
-                <form class='form-wrapper' id="registerUser">
-                    <div class='form-input-wrapper'>
-                        <input name="name" id="name" type="text" class="form-input" placeholder="Enter name"/>
-                        <span class="form-input-placeholder">Enter name</span>
-                        <div class='mt-1'>
-                            <small class='form-hint text-danger'></small>
-                        </div>
-                    </div>
-
-                    <div class='form-input-wrapper'>
-                        <input name="email" id="email" type="email" class="form-input" placeholder="Enter email"/>
-                        <span class="form-input-placeholder">Enter email</span>
-                        <div class='mt-1'>
-                            <small class='form-hint text-danger'></small>
-                        </div>
-                    </div>
-
-                    <div class='form-input-wrapper'>
-                        <input name="username" id="username" type="text" class="form-input" placeholder="Enter Username"/>
-                        <span class="form-input-placeholder">Enter Username</span>
-                        <div class='mt-1'>
-                            <small class='form-hint text-danger'></small>
-                        </div>
-                    </div>
-
-                    <div class='form-btn-wrap'>
-                        <button type='submit' class='btn btn-primary'>
-                            Save
-                        </button>
-                    </div>
-                </form>
+    <nav class="navbar navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand">JSDD-Calendar</a>
+            <div class="d-flex">
+                <a href="/signup" class="btn btn-primary">Sign up</a>
             </div>
         </div>
-        <div class='content__col-5 bg-primary'>
-            <div class='content__color-body text-white'>
-                <img src="/images/hero-banner.svg" alt="hero-banner">
+    </nav>
+
+    <section class='container mt-6rem'>
+        <div class='row'>
+            <div class='col-lg-5 order-2 order-lg-0'>
+                <h1 class='content__white-body-header fs-5rem fw-bold'>
+                    Easy scheduling <span class='text-primary'>ahead</span>
+                </h1>
+                <p class='content__white-body-text'>
+                    JSDD-Calendar helps you manage your calendar, scheduling meetings professionally and efficiently,
+                    eliminating the hassle of back-and-forth emails so you can get back to work.
+                </p>
+            </div>
+            <div class='col-lg-6 offset-lg-1'>
+                <img src="/images/hero-banner.svg" alt="hero-banner" class="img-fluid">
             </div>
         </div>
     </section>
 </main>
-
-<script src="/js/create-user.js"></script>
 </body>
 </html>

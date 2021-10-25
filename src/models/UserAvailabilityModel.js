@@ -8,7 +8,7 @@ const UserAvailabilitySchema = mongoose.Schema({
     },
 
     userAvailabilityId: {
-        type: mongoose.Schema.Types.ObjectId
+        type: mongoose.Schema.Types.ObjectId,
     },
     date: {
         type: Date,
