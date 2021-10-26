@@ -29,7 +29,7 @@ const UserService = () => {
             throw new Error('Cannot perform this request')
         }
         
-        const appointments = await UserRepository.getAllPendingUserAvailabity(user._id);
+        const appointments = await UserRepository.getAllPendingUserAvailability(user._id);
         return appointments;
     }
 
