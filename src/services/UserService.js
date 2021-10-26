@@ -26,10 +26,8 @@ const UserService = () => {
         if (!user) {
             throw new Error('Cannot perform this request')
         }
-
-        const appointments = await UserAvailabilityModel.find({
-            userId: user._id, status: 'pending'
-        });
+        
+        const appointments = await UserRepository.getAllPendingUserAvailability(user._id);
         return appointments;
     }
 
