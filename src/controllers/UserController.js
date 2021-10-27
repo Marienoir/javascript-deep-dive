@@ -19,7 +19,7 @@ const UserController = (serviceContainer) => {
             const result = await serviceContainer.userService.getAllPendingAppointments(req.params.username);
             res.status(200).json({
                 success: true,
-                result,
+                data: result,
             });
         } catch (error) {
             return res.status(401).json({
@@ -52,7 +52,7 @@ const UserController = (serviceContainer) => {
             const appointments = await serviceContainer.appointmentService.scheduledAppointments(req.params);
             res.status(200).json({
                 success: true,
-                appointments,
+                data: appointments,
             });
         } catch (error) {
             return res.status(401).json({

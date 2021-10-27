@@ -52,15 +52,15 @@ const AppointmentService = () => {
         }
 
         // Getting all the scheduledAppointments of the user
-        const appointment =
-            await AppointmentRepository.getUserScheduledAppointments(user._id);
+        const appointments = await AppointmentRepository.getUserScheduledAppointments(user._id);
+
 
         // if there are no scheduled appointments for the user throw an error
-        if (!appointment) {
+        if (!appointments) {
             throw new Error("No scheduled appointments for this user");
         }
 
-        return appointment;
+        return appointments;
     };
 
     return {

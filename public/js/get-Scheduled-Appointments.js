@@ -24,10 +24,10 @@ const getScheduledAppointments = async (username) => {
         if (!response.ok) {
             alert(`An error has occurred: ${response.status}`)
         }
-        const { appointments } = await response.json();
+        const { data } = await response.json();
 
-        if (appointments.length > 0) {
-            const newAppointment = appointments.map((appointment, i) => {
+        if (data.length > 0) {
+            const newAppointment = data.map((appointment, i) => {
                 return `
                     <tr>
                         <th scope="row">${i + 1}</th>
