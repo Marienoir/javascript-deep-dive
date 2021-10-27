@@ -5,18 +5,22 @@ const AppointmentRepository = require("../repositories/AppointmentRepository");
 
 const AppointmentService = () => {
     const bookAppointment = async (userAvailabilityId, info) => {
-        const { name, email, reason } = info;
+        const {
+            name,
+            email,
+            reason
+        } = info;
 
-        const userAvailability = await UserAvailabilityModel.findOne({
-            _id: userAvailabilityId,
-            status: "pending",
-        });
+        const userAvailability = await UserRepository.getAllPendingAvailabilityById(
+            userAvailabilityId
+        );
 
         if (!userAvailability) {
             throw new Error("This user date isn't available for booking");
         }
-
-        const { userId } = userAvailability;
+        const {
+            userId
+        } = userAvailability;
 
         let newAppointment = await AppointmentModel.create({
             userId,
@@ -37,7 +41,9 @@ const AppointmentService = () => {
     };
 
     const scheduledAppointments = async (params) => {
-        const { username } = params;
+        const {
+            username
+        } = params;
         // check if the user exists in the database
         const user = await UserRepository.findUserByUserName(username);
 
