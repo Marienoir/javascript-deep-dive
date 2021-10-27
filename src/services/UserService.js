@@ -9,7 +9,7 @@ const UserService = () => {
     }
 
     const setDate = async (username, date) => {
-        const user = await UserRepository.findUserByUserName(username)
+        const user = await UserRepository.findUserByUsername(username)
         if (!user) {
             throw new Error('Cannot perform this request')
         }
@@ -22,13 +22,12 @@ const UserService = () => {
     }
 
     const getAllPendingAppointments = async (username) => {
-        const user = await UserRepository.findUserByUserName(username)
+        const user = await UserRepository.findUserByUsername(username)
         if (!user) {
             throw new Error('Cannot perform this request')
         }
-        
-        const appointments = await UserRepository.getAllPendingUserAvailability(user._id);
-        return appointments;
+
+        return await UserRepository.getAllPendingUserAvailability(user._id);
     }
 
     return {

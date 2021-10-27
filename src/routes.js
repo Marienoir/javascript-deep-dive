@@ -18,8 +18,8 @@ router.post("/appointment/:userAvailabilityId", (req, res) =>
 router.get("/user/:username/appointments", (req, res) =>
     UserControllerHandler.getAllScheduledAppointments(req, res)
 );
-router.post("/user", (req, res) => {
-    UserControllerHandler.registerUser(req, res);
-});
+router.post("/user", (req, res) =>
+    UserControllerHandler.registerUser(req, res)
+);
 
 module.exports = router;

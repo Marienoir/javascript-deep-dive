@@ -41,11 +41,10 @@ const AppointmentService = () => {
     };
 
     const scheduledAppointments = async (params) => {
-        const {
-            username
-        } = params;
+        const { username } = params;
+
         // check if the user exists in the database
-        const user = await UserRepository.findUserByUserName(username);
+        const user = await UserRepository.findUserByUsername(username);
 
         // if user does not exist in the database throw new error
         if (!user) {
