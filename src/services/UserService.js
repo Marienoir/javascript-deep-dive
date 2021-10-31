@@ -20,14 +20,16 @@ const UserService = () => {
       throw new Error("Cannot perform this request");
     }
 
-    const checkIfRecordExists = await UserAvailabilityModel.findOne({
-      date: date,
-      userId: user._id,
-      status: "pending",
-    });
+    const checkIfRecordExists = await UserRepository.checkAvailabiltyStatus(
+      date,
+      user._id,
+      "pending"
+    );
 
     if (checkIfRecordExists) {
-      throw new Error("You can set date twice in a day");
+      throw new Error(
+        "You can set date twice in a day as your current date status is still pending"
+      );
     }
 
     let newDate = new UserAvailabilityModel({

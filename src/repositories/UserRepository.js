@@ -21,11 +21,21 @@ const UserRepository = () => {
     return UserModel.findOne({ email: email });
   };
 
+  const checkAvailabiltyStatus = async (date, userId, status) => {
+    const userRecord = await UserAvailabilityModel.findOne({
+      date,
+      userId,
+      status,
+    });
+    return userRecord;
+  };
+
   return {
     findUserByUsername,
     getAllPendingUserAvailability,
     getAllPendingAvailabilityById,
     findUserByEmail,
+    checkAvailabiltyStatus,
   };
 };
 module.exports = UserRepository();
