@@ -1,40 +1,56 @@
 const UserModel = require("../models/UserModel");
 const UserAvailabilityModel = require("../models/UserAvailabilityModel");
-const UserRepository = require("../repositories/UserRepository")
+const UserRepository = require("../repositories/UserRepository");
 
 const UserService = () => {
-    const addUser = async (postRequestData) => {
-        let newUser = new UserModel(postRequestData);
-        await newUser.save()
+  const addUser = async (postRequestData) => {
+    const { email } = postRequestData;
+    // check if user already exists in the data base
+    const userExists = await UserRepository.findUserByEmail(email);
+    if (userExists) {
+      throw new Error("User already exists");
+    }
+    let newUser = new UserModel(postRequestData);
+    await newUser.save();
+  };
+
+  const setDate = async (username, date) => {
+    const user = await UserRepository.findUserByUsername(username);
+    if (!user) {
+      throw new Error("Cannot perform this request");
     }
 
-    const setDate = async (username, date) => {
-        const user = await UserRepository.findUserByUsername(username)
-        if (!user) {
-            throw new Error('Cannot perform this request')
-        }
+    const checkIfRecordExists = await UserAvailabilityModel.findOne({
+      date: date,
+      userId: user._id,
+      status: "pending",
+    });
 
-        let newDate = new UserAvailabilityModel({
-            date: date,
-            userId: user._id
-        });
-        await newDate.save()
+    if (checkIfRecordExists) {
+      throw new Error("You can set date twice in a day");
     }
 
-    const getAllPendingAppointments = async (username) => {
-        const user = await UserRepository.findUserByUsername(username)
-        if (!user) {
-            throw new Error('Cannot perform this request')
-        }
+    let newDate = new UserAvailabilityModel({
+      date: date,
+      userId: user._id,
+    });
+    await newDate.save();
+  };
 
-        return await UserRepository.getAllPendingUserAvailability(user._id);
+  const getAllPendingAppointments = async (username) => {
+    const user = await UserRepository.findUserByUsername(username);
+    if (!user) {
+      throw new Error("Cannot perform this request");
     }
 
-    return {
-        addUser,
-        setDate,
-        getAllPendingAppointments
-    }
-}
+    return await UserRepository.getAllPendingUserAvailability(user._id);
+  };
 
-module.exports = UserService
+  return {
+    addUser,
+    setDate,
+    getAllPendingAppointments,
+  };
+};
+
+module.exports = UserService;
