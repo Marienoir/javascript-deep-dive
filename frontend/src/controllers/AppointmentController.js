@@ -1,5 +1,5 @@
 const scheduleAppointment = (req, res) => {
-  res.render("/booking");
+    res.render("/booking");
 };
 
 module.exports = { scheduleAppointment };
