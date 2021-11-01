@@ -17,10 +17,24 @@ const UserRepository = () => {
         });
     };
 
+    const findUserByEmail = async (email) => {
+        return UserModel.findOne({ email: email });
+    };
+
+    const checkAvailabilityStatus = async (date, userId, status) => {
+        return UserAvailabilityModel.findOne({
+            date,
+            userId,
+            status,
+        });
+    };
+
     return {
         findUserByUsername,
         getAllPendingUserAvailability,
         getAllPendingAvailabilityById,
+        findUserByEmail,
+        checkAvailabilityStatus,
     };
 };
 module.exports = UserRepository();
