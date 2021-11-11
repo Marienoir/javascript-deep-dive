@@ -30,12 +30,19 @@ const UserRepository = () => {
     return userRecord;
   };
 
+  const getUserScheduledAppointments = async (userId) => {
+    return AppointmentModel.find({
+      userId: userId,
+    }).populate("userAvailabilityId", "date");
+  };
+
   return {
     findUserByUsername,
     getAllPendingUserAvailability,
     getAllPendingAvailabilityById,
     findUserByEmail,
     checkAvailabiltyStatus,
+    getUserScheduledAppointments,
   };
 };
 module.exports = UserRepository();

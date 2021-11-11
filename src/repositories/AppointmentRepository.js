@@ -1,15 +1,29 @@
 const AppointmentModel = require("../models/AppointmentModel");
 
 const AppointmentRepository = () => {
-    const getUserScheduledAppointments = async (userId) => {
-        return AppointmentModel.find({
-            userId: userId,
-        }).populate("userAvailabilityId", "date");
-    };
+  const createAppointment = (userId, userAvailabilityId, info) => {
+    const { name, email, reason } = info;
+    let newAppointment = await AppointmentModel.create({
+      userId,
+      userAvailabilityId,
+      name,
+      email,
+      reason,
+    });
 
-    return {
-        getUserScheduledAppointments,
-    };
+    userAvailability.status = "booked";
+    await userAvailability.save();
+
+    if (!newAppointment) {
+      throw new Error("Appointment not scheduled successfully");
+    }
+
+    return "Appointment booked successfully!!!";
+  };
+
+  return {
+    createAppointment,
+  };
 };
 
 module.exports = AppointmentRepository();
