@@ -20,7 +20,7 @@ const UserService = () => {
       throw new Error("Cannot perform this request");
     }
 
-    const checkIfRecordExists = await UserRepository.checkAvailabiltyStatus(
+    const checkIfRecordExists = await UserRepository.checkAvailabilityStatus(
       date,
       user._id,
       "pending"
@@ -28,7 +28,7 @@ const UserService = () => {
 
     if (checkIfRecordExists) {
       throw new Error(
-        "You can set date twice in a day as your current date status is still pending"
+        "You can't set date twice in a day as your current date status is still pending"
       );
     }
 

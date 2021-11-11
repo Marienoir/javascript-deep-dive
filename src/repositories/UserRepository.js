@@ -21,19 +21,12 @@ const UserRepository = () => {
     return UserModel.findOne({ email: email });
   };
 
-  const checkAvailabiltyStatus = async (date, userId, status) => {
-    const userRecord = await UserAvailabilityModel.findOne({
+  const checkAvailabilityStatus = async (date, userId, status) => {
+    return UserAvailabilityModel.findOne({
       date,
       userId,
       status,
     });
-    return userRecord;
-  };
-
-  const getUserScheduledAppointments = async (userId) => {
-    return AppointmentModel.find({
-      userId: userId,
-    }).populate("userAvailabilityId", "date");
   };
 
   return {
@@ -41,8 +34,7 @@ const UserRepository = () => {
     getAllPendingUserAvailability,
     getAllPendingAvailabilityById,
     findUserByEmail,
-    checkAvailabiltyStatus,
-    getUserScheduledAppointments,
+    checkAvailabilityStatus,
   };
 };
 module.exports = UserRepository();
