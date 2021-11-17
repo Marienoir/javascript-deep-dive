@@ -5,10 +5,10 @@ const AppointmentRepository = () => {
         return AppointmentModel.find({
             userId: userId,
         }).populate("userAvailabilityId", "date");
-    };
-
+    }
+    
     return {
-        getUserScheduledAppointments,
+        getUserScheduledAppointments
     };
 };
 

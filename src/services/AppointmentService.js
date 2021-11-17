@@ -1,15 +1,9 @@
-const UserAvailabilityModel = require("../models/UserAvailabilityModel");
-const AppointmentModel = require("../models/AppointmentModel");
 const UserRepository = require("../repositories/UserRepository");
-const AppointmentRepository = require("../repositories/AppointmentRepository");
+const AppointmentModel = require("../models/AppointmentModel");
 
 const AppointmentService = () => {
     const bookAppointment = async (userAvailabilityId, info) => {
-        const {
-            name,
-            email,
-            reason
-        } = info;
+        const {name, email, reason} = info;
 
         const userAvailability = await UserRepository.getAllPendingAvailabilityById(
             userAvailabilityId
@@ -18,10 +12,8 @@ const AppointmentService = () => {
         if (!userAvailability) {
             throw new Error("This user date isn't available for booking");
         }
-        const {
-            userId
-        } = userAvailability;
-
+        const { userId } = userAvailability;
+    
         let newAppointment = await AppointmentModel.create({
             userId,
             userAvailabilityId,
@@ -29,43 +21,19 @@ const AppointmentService = () => {
             email,
             reason,
         });
-
+    
         userAvailability.status = "booked";
-        await userAvailability.save();
-
+    
         if (!newAppointment) {
             throw new Error("Appointment not scheduled successfully");
         }
-
+        await userAvailability.save();
+    
         return "Appointment booked successfully!!!";
-    };
-
-    const scheduledAppointments = async (params) => {
-        const { username } = params;
-
-        // check if the user exists in the database
-        const user = await UserRepository.findUserByUsername(username);
-
-        // if user does not exist in the database throw new error
-        if (!user) {
-            throw new Error("User is not available");
-        }
-
-        // Getting all the scheduledAppointments of the user
-        const appointments = await AppointmentRepository.getUserScheduledAppointments(user._id);
-
-
-        // if there are no scheduled appointments for the user throw an error
-        if (!appointments) {
-            throw new Error("No scheduled appointments for this user");
-        }
-
-        return appointments;
     };
 
     return {
         bookAppointment,
-        scheduledAppointments,
     };
 };
 
