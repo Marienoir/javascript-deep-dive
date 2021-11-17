@@ -1,5 +1,4 @@
 const UserRepository = require("../repositories/UserRepository");
-const AppointmentRepository = require("../repositories/AppointmentRepository");
 const AppointmentModel = require("../models/AppointmentModel");
 
 const AppointmentService = () => {
