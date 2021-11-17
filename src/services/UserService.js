@@ -1,6 +1,7 @@
 const UserModel = require("../models/UserModel");
 const UserAvailabilityModel = require("../models/UserAvailabilityModel");
 const UserRepository = require("../repositories/UserRepository");
+const AppointmentRepository = require("../repositories/AppointmentRepository");
 
 const UserService = () => {
     const addUser = async (postRequestData) => {
@@ -60,7 +61,7 @@ const UserService = () => {
         }
 
         // Getting all the scheduledAppointments of the user
-        const appointments = await UserRepository.getUserScheduledAppointments(
+        const appointments = await AppointmentRepository.getUserScheduledAppointments(
             user._id
         );
 
