@@ -4,7 +4,8 @@ const UserController = (serviceContainer) => {
             await serviceContainer.userService.addUser(req.body);
             return res.status(201).json({
                 success: true,
-                message: `User save successfully. Here is your unique link: ${process.env.BASE_URL}/dashboard?username=${req.body.username}`,
+                message: `User save successfully. Here is your unique link:
+                 ${process.env.BASE_URL}/dashboard?username=${req.body.username}`,
             });
         } catch (e) {
             return res.status(400).json({
@@ -52,8 +53,7 @@ const UserController = (serviceContainer) => {
 
     const getAllScheduledAppointments = async (req, res) => {
         try {
-            const appointments =
-                await serviceContainer.userService.scheduledAppointments(req.params);
+            const appointments = await serviceContainer.userService.scheduledAppointments(req.params);
             res.status(200).json({
                 success: true,
                 data: appointments,

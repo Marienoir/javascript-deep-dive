@@ -3,6 +3,8 @@ const AppointmentModel = require("../models/AppointmentModel");
 
 const AppointmentService = () => {
     const bookAppointment = async (userAvailabilityId, info) => {
+        const {name, email, reason} = info;
+
         const userAvailability = await UserRepository.getAllPendingAvailabilityById(
             userAvailabilityId
         );
@@ -11,7 +13,6 @@ const AppointmentService = () => {
             throw new Error("This user date isn't available for booking");
         }
         const { userId } = userAvailability;
-        const {name, email, reason} = info;
     
         let newAppointment = await AppointmentModel.create({
             userId,
